@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="icon" type="image/jpg" href="/images/LearnOwl.jpg">
     <title>Dashboard</title>
 </head>
 
@@ -43,7 +44,7 @@
                     </span>
                     <h3>Students</h3>
                 </a>
-                <a href="#">
+                <a href="instructor.php">
                     <span class="material-symbols-rounded">
                         groups
                     </span>
