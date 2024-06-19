@@ -154,7 +154,7 @@
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-                <a href="#">Show More</a>
+                <a href="instructor.php">Show More</a>
             </div>
             <!--END OF COURSES TABLE-->
         </main>
