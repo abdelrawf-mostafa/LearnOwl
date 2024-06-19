@@ -7,9 +7,39 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #4b7d7b;
+            background-color: #001f3f;
             margin: 0;
             padding: 0;
+            overflow: hidden;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .stars:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            animation: animateStars 50s linear infinite;
+        }
+
+        @keyframes animateStars {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-100vh);
+            }
         }
 
         .container {
@@ -127,6 +157,7 @@
     </style>
 </head>
 <body>
+    <div class="stars"></div>
     <div class="container">
         <h1>Courses List</h1>
         <table>
@@ -151,6 +182,7 @@
                     die("Connection failed: " . $conn->connect_error);
                 }
 
+                $sql = "SELECT id, course_name, description, instructor FROM courses";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
