@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
     <title>Dashboard</title>
 </head>
+
 <body>
+    <?php include 'php/fetch_courses.php'; ?>
+    <?php include 'php/fetch_analytics.php'; ?>
+    <?php include 'php/fetch_students.php'; ?>
 
 
-    <!--<?php
-$courses = [
-    [
-        'id' => '1C',
-        'title' => 'Math 3',
-        'description' => 'Focuses mainly on developing your calculus skills',
-        'instructor' => 'Hussin'
-    ],
-    [
-        'id' => '2C',
-        'title' => 'JavaScript Basics',
-        'description' => 'Introduction to JavaScript programming',
-        'instructor' => 'John Doe'
-    ],
-    [
-        'id' => '3C',
-        'title' => 'Advanced CSS',
-        'description' => 'Master the art of CSS for web design',
-        'instructor' => 'Jane Smith'
-    ]
-];
-?>-->
-
-
-    
     <div class="container">
         <!-- SIDEBAR -->
         <aside>
@@ -44,43 +24,43 @@ $courses = [
                     <h2>Learn <span class="success">Owl</span></h2>
                 </div>
                 <div class="close" id="close-btn">
-                <span class="material-symbols-rounded">
-                    close
+                    <span class="material-symbols-rounded">
+                        close
                     </span>
                 </div>
             </div>
-            
+
             <div class="sidebar">
                 <a href="#" class="active">
                     <span class="material-symbols-rounded">
                         dashboard
-                        </span>
-                        <h3>Dashboard</h3>
+                    </span>
+                    <h3>Dashboard</h3>
                 </a>
                 <a href="#">
                     <span class="material-symbols-rounded">
                         person
-                        </span>
-                        <h3>Students</h3>
+                    </span>
+                    <h3>Students</h3>
                 </a>
                 <a href="#">
                     <span class="material-symbols-rounded">
                         groups
-                        </span>
-                        <h3>Instructor</h3>
+                    </span>
+                    <h3>Instructor</h3>
                 </a>
                 <a href="#">
                     <span class="material-symbols-rounded">
                         logout
-                        </span>
-                        <h3>logout</h3>
+                    </span>
+                    <h3>logout</h3>
                 </a>
             </div>
         </aside>
         <!--END OF SIDEBAR-->
 
         <!-- MAIN CONTENT -->
-         <main>
+        <main>
             <h1>Analytics</h1>
             <!--ANALYTICS-->
             <div class="analyse">
@@ -88,7 +68,7 @@ $courses = [
                     <div class="status">
                         <div class="info">
                             <h3>students</h3>
-                            <h1>1300</h1>
+                            <h1><?= $students_count ?></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -104,7 +84,7 @@ $courses = [
                     <div class="status">
                         <div class="info">
                             <h3>Courses</h3>
-                            <h1>60</h1>
+                            <h1><?= $courses_count ?></h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -120,7 +100,7 @@ $courses = [
                     <div class="status">
                         <div class="info">
                             <h3>Instructors</h3>
-                            <h1>40</h1>
+                            <h1>17</h1>
                         </div>
                         <div class="progress">
                             <svg>
@@ -135,30 +115,16 @@ $courses = [
             </div>
             <!--END OF ANALYSES-->
 
-            <!--NEW STUDENTS-->
             <div class="new-students">
                 <h2>New Students</h2>
                 <div class="student-list">
-                    <div class="student">
-                        <img src="images/Mohamed Kamal.jpg">
-                        <h2>Abo Kamal</h2>
-                        <p>54 Min ago</p>
-                    </div>
-                    <div class="student">
-                        <img src="images/Abdullah Mohy.png">
-                        <h2>Mohy</h2>
-                        <p>3 Hours ago</p>
-                    </div>
-                    <div class="student">
-                        <img src="images/Mohamady Khalid.png">
-                        <h2>Mohamady</h2>
-                        <p>7 Hours ago</p>
-                    </div>
-                    <div class="student">
-                        <img src="images/plus.jpg">
-                        <h2>More</h2>
-                        <p>New Student</p>
-                    </div>
+                    <?php foreach ($students as $student): ?>
+                        <div class="student">
+                            <img src="images/user.jpg" alt="Anonymous Image">
+                            <h2><?= htmlspecialchars($student) ?></h2>
+                            <p>New Student</p>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <!--END NEW STUDENTS-->
@@ -177,42 +143,24 @@ $courses = [
                         </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1C</td>
-                        <td>Calculus</td>
-                        <td>Focuses mainly and developing your calculus skills</td>
-                        <td>Hussin</td>
-                    </tr>
-                    <tr>
-                        <td>2C</td>
-                        <td>Algorithm</td>
-                        <td>Introduction to algorithm</td>
-                        <td>Hussin</td>
-                    </tr>
-                    <tr>
-                        <td>3C</td>
-                        <td>Data structure</td>
-                        <td>Master the art of data structure for problem solving skills</td>
-                        <td>Hussin</td>
-                    </tr>
-                    <?php foreach ($courses as $course): ?>
-            <tr>
-                <td><?= htmlspecialchars($course['id']) ?></td>
-                <td><?= htmlspecialchars($course['title']) ?></td>
-                <td><?= htmlspecialchars($course['description']) ?></td>
-                <td><?= htmlspecialchars($course['instructor']) ?></td>
-            </tr>
-            <?php endforeach; ?>
-                </tbody>
+                        <?php foreach ($courses as $course): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($course['id']) ?></td>
+                                <td><?= htmlspecialchars($course['title']) ?></td>
+                                <td><?= htmlspecialchars($course['description']) ?></td>
+                                <td><?= htmlspecialchars($course['instructor']) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
                 </table>
-                <a href="#">Show All</a>
+                <a href="#">Show More</a>
             </div>
             <!--END OF COURSES TABLE-->
-         </main>
-         <!--END OF MAIN CONTENT-->
+        </main>
+        <!--END OF MAIN CONTENT-->
 
-         <!--RIGHT SECTION-->
-         <div class="right-section">
+        <!--RIGHT SECTION-->
+        <div class="right-section">
             <div class="nav">
                 <button id="menu-btn">
                     <span class="material-symbols-rounded">
@@ -239,7 +187,7 @@ $courses = [
             </div>
             <!--END OF NAV-->
 
-            <!--REMINDER-->
+            <!--ADD NEW-->
             <div class="user-profile">
                 <div class="logo">
                     <img src="images/LearnOwl.jpg">
@@ -250,24 +198,34 @@ $courses = [
 
             <div class="reminders">
                 <div class="header">
-                    <h2>New Course</h2>
+                    <h2>Add New</h2>
                     <span class="material-symbols-rounded">notifications_none</span>
                 </div>
 
-                
+
 
                 <div class="notification add-reminder">
                     <div>
                         <span class="material-symbols-rounded">add</span>
-                        <h3>Add Course</h3>
+                        <a href="#">
+                            <h3>Add Student</h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="notification add-reminder">
+                    <div>
+                        <span class="material-symbols-rounded">add</span>
+                        <a href="#">
+                            <h3>Add Course</h3>
+                        </a>
                     </div>
                 </div>
 
             </div>
-         </div>
-</div>
+        </div>
+    </div>
 
-    <script src="/js/dashboard.js"></script>
-    <script src="orders.js"></script>
+    <script src="js/dashboard.js"></script>
 </body>
+
 </html>
