@@ -106,7 +106,6 @@
                     <th>Course Name</th>
                     <th>Description</th>
                     <th>Instructor</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -132,10 +131,6 @@
                                 <td>" . $row["course_name"] . "</td>
                                 <td>" . $row["description"] . "</td>
                                 <td>" . $row["instructor"] . "</td>
-                                <td>
-                                    <button class='btn btn-delete' onclick='deleteCourse(" . $row["id"] . ")'>Delete</button>
-                                    <button class='btn btn-add' onclick='addCourse(" . $row["id"] . ")' style='display:none;'>Add</button>
-                                </td>
                               </tr>";
                     }
                 } else {
