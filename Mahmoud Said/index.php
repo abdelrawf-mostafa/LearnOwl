@@ -94,39 +94,6 @@
             color: #2980b9;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {background-color: #45a049}
-
-        .btn:active {
-            background-color: #3e8e41;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-
-        .btn-delete {
-            background-color: #e74c3c;
-        }
-
-        .btn-delete:hover {background-color: #c0392b}
-
-        .btn-delete:active {
-            background-color: #a93226;
-        }
     </style>
 </head>
 <body>
@@ -180,17 +147,5 @@
             </tbody>
         </table>
     </div>
-
-    <script>
-        function deleteCourse(id) {
-            document.getElementById('course-' + id).style.display = 'none';
-            document.querySelector('#course-' + id + ' .btn-add').style.display = 'inline-block';
-        }
-
-        function addCourse(id) {
-            document.getElementById('course-' + id).style.display = 'table-row';
-            document.querySelector('#course-' + id + ' .btn-add').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
