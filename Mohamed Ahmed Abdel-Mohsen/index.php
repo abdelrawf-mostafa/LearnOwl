@@ -16,11 +16,11 @@
             <label>ID:</label>
             <input type="text" name="id" value="" placeholder="Enter the row id to change the info"><br>
             <label>Title:</label>
-            <input type="text" name="title" value="" placeholder="Text"><br>
+            <input type="text" name="title" value="" placeholder="Enter the Text"><br>
             <label>Description:</label>
-            <textarea name="description" placeholder="Description"></textarea><br>
+            <textarea name="description" placeholder="Enter the Description"></textarea><br>
             <label>Instructor:</label>
-            <input type="text" name="instructor" value="" placeholder="Instructor"><br>
+            <input type="text" name="instructor" value="" placeholder="Enter the Instructor"><br>
             <input type="submit" value="Update Course">
         </form>
         <br>
