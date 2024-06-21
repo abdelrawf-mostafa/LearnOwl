@@ -1,6 +1,6 @@
 <?php
-include "connect.php";
-if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['instructor']))  {
+include "db_conn.php";
+if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['instructor'])) {
     function validata($data)
     {
         $data = trim($data);
@@ -12,22 +12,21 @@ if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['inst
     $title = validata($_POST['title']);
     $description = validata($_POST['description']);
     $instructor = validata($_POST['instructor']);
+    $id = validata($_POST['ID']);
+    ;
 
     if (empty($title)) {
         header("Location: index.php?error=Title is required");
-    exit();
-    }
-    else if (empty($description)) {
+        exit();
+    } else if (empty($description)) {
         header("Location: index.php?error=Description is required");
         exit();
-    }
-    else if (empty($instructor)) {
+    } else if (empty($instructor)) {
         header("Location: index.php?error=Instructor is required");
         exit();
-    }
-    else {
-        $id = 1;
-        $sql = "UPDATE courses SET title='$title', description='$description', instructor='$instructor' WHERE id='$id'";
+    } else {
+
+        $sql = "UPDATE courses SET title='$title', description='$description', instructor='$instructor' WHERE ID='$id'";
 
         if (mysqli_query($conn, $sql)) {
             if (mysqli_affected_rows($conn) > 0) {
@@ -42,8 +41,7 @@ if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['inst
     }
 
 
-}
-else {
+} else {
     header("Location: index.php");
     exit();
 }
