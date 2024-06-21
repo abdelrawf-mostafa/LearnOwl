@@ -13,8 +13,11 @@ if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['inst
     $description = validata($_POST['description']);
     $instructor = validata($_POST['instructor']);
      $id = validata($_POST['id']);
-
-    if (empty($title)) {
+if (empty($id)) {
+    header("Location: index.php?error=Id is required");
+    exit();
+}
+    else if (empty($title)) {
         header("Location: index.php?error=Title is required");
     exit();
     }
