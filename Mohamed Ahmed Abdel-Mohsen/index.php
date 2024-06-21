@@ -13,6 +13,8 @@
             <?php if (isset($_GET['error'])) { ?>
                 <p class="error"><?php echo $_GET['error']; ?></p>
                 <?php }?>
+            <label>ID:</label>
+            <input type="text" name="id" value="" placeholder="Enter the row id to change the info"><br>
             <label>Title:</label>
             <input type="text" name="title" value="" placeholder="Text"><br>
             <label>Description:</label>
