@@ -1,34 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Edit Student Page</title>
-<link rel="stylesheet" href="color.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Information</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
-    <h2>Update Student Information</h2>
-    <?php if ($student): ?>
-    <form id="editStudentForm" action="edit_student.php" method="post">
-        <input type="hidden" name="studentId" value="<?php echo $student['id']; ?>">
-        <div class="form-group">
+    <div class="container">
+        <h2>Edit Information</h2>
+        <form action="update.php" method="post">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="<?php echo $student['name']; ?>" required>
-        </div>
-        <div class="form-group">
+            <input type="text" id="name" name="name" required>
+            
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<?php echo $student['email']; ?>" required>
-        </div>
-        <div class="form-group">
+            <input type="email" id="email" name="email" required>
+            
             <label for="gpa">GPA:</label>
-            <input type="number" id="gpa" name="gpa" step="0.01" value="<?php echo $student['gpa']; ?>" required>
-        </div>
-        <button type="submit">Save Changes</button>
-    </form>
-    <?php else: ?>
-    <p>Student not found.</p>
-    <?php endif; ?>
-</div>
+            <input type="text" id="gpa" name="gpa" required>
+            
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
 </body>
 </html>
+
